@@ -10,7 +10,7 @@ const agents = [
     description: "Premium Umrah packages with 5-star accommodations and dedicated guides.",
     phone: "+60 3-1234 5678",
     website: "https://al-safwah.example.com",
-    image: "/lovable-uploads/238ab02e-0833-40b7-a3d9-76324126a4b7.png"
+    image: "https://placehold.co/600x400/10b981/ffffff?text=Al-Safwah+Travel"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const agents = [
     description: "Specialized in group Umrah packages with experienced mutawwifs.",
     phone: "+60 3-8765 4321",
     website: "https://al-madinah.example.com",
-    image: "/lovable-uploads/238ab02e-0833-40b7-a3d9-76324126a4b7.png"
+    image: "https://placehold.co/600x400/10b981/ffffff?text=Al-Madinah+Tours"
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const agents = [
     description: "Family-friendly Umrah packages with flexible payment plans.",
     phone: "+60 3-2468 1357",
     website: "https://barakah.example.com",
-    image: "/lovable-uploads/238ab02e-0833-40b7-a3d9-76324126a4b7.png"
+    image: "https://placehold.co/600x400/10b981/ffffff?text=Barakah+Travel"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const agents = [
     description: "Luxury Umrah experiences with VIP transportation and accommodation.",
     phone: "+60 3-1357 2468",
     website: "https://makkah-services.example.com",
-    image: "/lovable-uploads/238ab02e-0833-40b7-a3d9-76324126a4b7.png"
+    image: "https://placehold.co/600x400/10b981/ffffff?text=Makkah+Services"
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const agents = [
     description: "Budget-friendly Umrah packages without compromising quality.",
     phone: "+60 3-9876 5432",
     website: "https://zamzam.example.com",
-    image: "/lovable-uploads/238ab02e-0833-40b7-a3d9-76324126a4b7.png"
+    image: "https://placehold.co/600x400/10b981/ffffff?text=Zam+Zam+Travel"
   }
 ];
 

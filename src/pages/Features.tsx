@@ -11,115 +11,134 @@ import {
   BookOpen,
   Clock,
   Coins,
+  MapPin,
 } from "lucide-react";
 
 const Features = () => {
-  const quickFeatures = [
+  const quickActions = [
     {
-      icon: <Scan className="w-6 h-6 text-primary" />,
+      icon: <Scan className="w-6 h-6" />,
       label: "Scan",
     },
     {
-      icon: <Wallet className="w-6 h-6 text-primary" />,
+      icon: <Wallet className="w-6 h-6" />,
       label: "Pay",
     },
     {
-      icon: <Send className="w-6 h-6 text-primary" />,
+      icon: <Send className="w-6 h-6" />,
       label: "Transfer",
     },
     {
-      icon: <CreditCard className="w-6 h-6 text-primary" />,
+      icon: <CreditCard className="w-6 h-6" />,
       label: "Visa Card",
     },
   ];
 
-  const accessFeatures = [
+  const quickAccess = [
     {
-      icon: <Wallet className="w-6 h-6 text-primary" />,
+      icon: <Wallet className="w-6 h-6" />,
       label: "Finance",
     },
     {
-      icon: <CreditCard className="w-6 h-6 text-primary" />,
+      icon: <CreditCard className="w-6 h-6" />,
       label: "E-Wallet",
     },
     {
-      icon: <Headphones className="w-6 h-6 text-primary" />,
+      icon: <Headphones className="w-6 h-6" />,
       label: "Support",
     },
     {
-      icon: <Building2 className="w-6 h-6 text-primary" />,
+      icon: <Building2 className="w-6 h-6" />,
       label: "Mosque",
     },
     {
-      icon: <Calendar className="w-6 h-6 text-primary" />,
+      icon: <Calendar className="w-6 h-6" />,
       label: "Schedule",
     },
     {
-      icon: <BookOpen className="w-6 h-6 text-primary" />,
+      icon: <BookOpen className="w-6 h-6" />,
       label: "Quran",
     },
     {
-      icon: <Clock className="w-6 h-6 text-primary" />,
+      icon: <Clock className="w-6 h-6" />,
       label: "Qibla",
     },
     {
-      icon: <Coins className="w-6 h-6 text-primary" />,
+      icon: <Coins className="w-6 h-6" />,
       label: "Zakat",
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      label: "Partnership",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
-      {/* Header Section */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-bold">Malaysia</h1>
-        </div>
-        <Button variant="outline" className="rounded-full">
-          <Wallet className="w-5 h-5 mr-2" />
-          RM 500.64
-        </Button>
-      </div>
-
-      {/* Quick Actions Grid */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        {quickFeatures.map((feature, index) => (
-          <Button
-            key={index}
-            variant="outline"
-            className="flex flex-col items-center gap-2 h-auto py-4 hover:bg-primary/5"
-          >
-            {feature.icon}
-            <span className="text-sm">{feature.label}</span>
+    <div className="min-h-screen bg-background">
+      {/* Header with Balance */}
+      <div className="bg-white p-4 sticky top-0 z-10 shadow-sm">
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-semibold">Malaysia</h1>
+          <Button variant="outline" className="rounded-full">
+            <Wallet className="w-4 h-4 mr-2" />
+            RM 500.64
           </Button>
-        ))}
+        </div>
       </div>
 
-      {/* Promo Card */}
-      <Card className="bg-primary/10 p-6 mb-8 rounded-xl">
-        <h2 className="text-xl font-semibold text-primary mb-2">
-          Go cashless and enjoy 5% cashback
-        </h2>
-        <p className="text-sm text-gray-600">
-          in Malaysia, Madinah & Mekah
-        </p>
-        <p className="text-xs text-gray-500">New users only</p>
-      </Card>
-
-      {/* Quick Access Section */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Quick Access</h2>
-        <div className="grid grid-cols-4 md:grid-cols-5 gap-4">
-          {accessFeatures.map((feature, index) => (
-            <Button
+      <div className="p-4 space-y-6">
+        {/* Quick Actions Grid */}
+        <div className="grid grid-cols-4 gap-4">
+          {quickActions.map((action, index) => (
+            <div
               key={index}
-              variant="outline"
-              className="flex flex-col items-center gap-2 h-auto py-4 hover:bg-primary/5"
+              className="flex flex-col items-center justify-center gap-2"
             >
-              {feature.icon}
-              <span className="text-sm">{feature.label}</span>
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full h-16 flex flex-col gap-1"
+              >
+                {action.icon}
+                <span className="text-xs">{action.label}</span>
+              </Button>
+            </div>
           ))}
+        </div>
+
+        {/* Promo Card */}
+        <Card className="bg-primary/5 p-4">
+          <div className="space-y-1">
+            <h2 className="font-semibold text-primary">
+              Go cashless and enjoy 5% cashback
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              in Malaysia, Madinah & Mekah
+            </p>
+            <p className="text-xs text-muted-foreground">New users only</p>
+          </div>
+        </Card>
+
+        {/* Quick Access Section */}
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold">Quick Access</h2>
+          <div className="grid grid-cols-5 gap-4">
+            {quickAccess.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center gap-2"
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full h-16 flex flex-col gap-1"
+                >
+                  {item.icon}
+                  <span className="text-xs">{item.label}</span>
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
