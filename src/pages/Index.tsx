@@ -39,7 +39,7 @@ const Index = () => {
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
             Platform Pembayaran Syariah, Selamat & Mudah
-			Pengurusan Haji,Umrah & Kewangan
+			<br>Pengurusan Haji,Umrah & Kewangan
           </p>
           <Button
             onClick={() => navigate("/register")}
