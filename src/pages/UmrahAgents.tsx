@@ -1,9 +1,6 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Building2, Phone, ExternalLink } from "lucide-react"
-import Image from "next/image"
 
 const agents = [
   {
@@ -126,11 +123,9 @@ const UmrahAgents = () => {
               className="bg-white/90 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow duration-300 border-none"
             >
               <div className="aspect-video relative overflow-hidden bg-white p-4 flex items-center justify-center">
-                <Image
+                <img
                   src={agent.image || "/placeholder.svg"}
                   alt={`${agent.name} logo`}
-                  width={200}
-                  height={100}
                   className="object-contain max-h-full max-w-full"
                 />
               </div>
@@ -173,4 +168,3 @@ const UmrahAgents = () => {
 }
 
 export default UmrahAgents
-
