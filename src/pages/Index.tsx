@@ -1,10 +1,7 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { CreditCard, Globe, Users, Shield, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Link } from "react-router-dom"
 
 const features = [
   {
@@ -38,13 +35,10 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <div className="flex justify-center mb-8 relative">
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-2xl"></div>
-            <Image
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_6073573013904802303_y__2_-removebg-preview-DH6NfejGGqm7q8otTaaXNmWpLV0Nzk.png"
               alt="AmanahPay Logo"
-              width={300}
-              height={200}
-              className="w-auto h-auto relative z-10"
-              priority
+              className="w-auto h-[200px] relative z-10"
             />
           </div>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
@@ -56,7 +50,7 @@ export default function Home() {
             asChild
             className="bg-[#ffd700] hover:bg-[#ffdf33] text-[#6abd45] font-semibold px-8 py-6 rounded-full text-lg"
           >
-            <Link href="/register">
+            <Link to="/register">
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
@@ -91,7 +85,7 @@ export default function Home() {
             asChild
             className="bg-[#ffd700] hover:bg-[#ffdf33] text-[#6abd45] font-semibold px-8 py-6 rounded-full text-lg"
           >
-            <Link href="/login">
+            <Link to="/register">
               Sign Up Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
@@ -101,4 +95,3 @@ export default function Home() {
     </div>
   )
 }
-
