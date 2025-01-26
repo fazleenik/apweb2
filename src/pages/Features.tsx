@@ -94,7 +94,7 @@ export default function MobileBanking() {
       {/* Quick Access */}
       <div className="p-4">
         <h2 className="font-medium mb-4">Quick Access</h2>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-4 gap-4">
           <div className="flex flex-col items-center gap-1">
             <Building2 className="h-5 w-5 text-gray-600" />
             <span className="text-xs">Finance</span>
@@ -140,4 +140,3 @@ export default function MobileBanking() {
     </div>
   )
 }
-
