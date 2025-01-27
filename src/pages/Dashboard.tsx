@@ -1,10 +1,7 @@
-"use client"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Calendar, MessageSquare, FileText, Settings } from "lucide-react"
-import Image from "next/image"
 
 const Dashboard = () => {
   return (
@@ -59,12 +56,10 @@ const Dashboard = () => {
           </div>
           <div className="flex justify-center md:justify-end flex-shrink-0">
             <div className="w-24 h-24 md:w-32 md:h-32 relative">
-              <Image
+              <img
                 src="https://prod-th-assets.s3.ap-southeast-1.amazonaws.com/images/0/Amani-Travel_0.png?VersionId=V.LQPZu9omxJg0joacBTIu3Vute7xeM3"
                 alt="AMANI TRAVEL SDN. BHD. Logo"
-                layout="fill"
-                objectFit="contain"
-                className="rounded-lg"
+                className="w-full h-full object-contain rounded-lg"
               />
             </div>
           </div>
@@ -117,4 +112,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
