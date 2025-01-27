@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Address = {
   street: string;
@@ -36,6 +37,25 @@ type RegistrationData = {
   spouse?: PersonInfo;
   heirs: HeirInfo[];
 };
+
+const malaysianStates = [
+  "Johor",
+  "Kedah",
+  "Kelantan",
+  "Melaka",
+  "Negeri Sembilan",
+  "Pahang",
+  "Perak",
+  "Perlis",
+  "Pulau Pinang",
+  "Sabah",
+  "Sarawak",
+  "Selangor",
+  "Terengganu",
+  "Wilayah Persekutuan Kuala Lumpur",
+  "Wilayah Persekutuan Labuan",
+  "Wilayah Persekutuan Putrajaya"
+];
 
 const Register = () => {
   const navigate = useNavigate();
@@ -221,8 +241,24 @@ const Register = () => {
       <div className="grid grid-cols-2 gap-4">
         {renderInputField("City", "city", address.city,
           (value) => handleAddressChange(section, "city", value))}
-        {renderInputField("State", "state", address.state,
-          (value) => handleAddressChange(section, "state", value))}
+        <div className="space-y-2">
+          <Label htmlFor="state" className="text-gray-700">State</Label>
+          <Select
+            value={address.state}
+            onValueChange={(value) => handleAddressChange(section, "state", value)}
+          >
+            <SelectTrigger className="bg-gray-50 border-gray-200 focus:bg-white">
+              <SelectValue placeholder="Select state" />
+            </SelectTrigger>
+            <SelectContent>
+              {malaysianStates.map((state) => (
+                <SelectItem key={state} value={state}>
+                  {state}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       {renderInputField("Postcode", "postcode", address.postcode,
         (value) => handleAddressChange(section, "postcode", value))}
