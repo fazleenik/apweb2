@@ -48,7 +48,7 @@ export default function Home() {
           </p>
           <Button
             asChild
-            className="bg-[#ffd700] hover:bg-[#ffdf33] text-[#6abd45] font-semibold px-8 py-6 rounded-full text-lg"
+            className="bg-[#ffd700] hover:bg-[#ffdf33] text-white font-semibold px-8 py-6 rounded-full text-lg"
           >
             <Link to="/register">
               Get Started
@@ -83,7 +83,7 @@ export default function Home() {
           </p>
           <Button
             asChild
-            className="bg-[#ffd700] hover:bg-[#ffdf33] text-[#6abd45] font-semibold px-8 py-6 rounded-full text-lg"
+            className="bg-[#ffd700] hover:bg-[#ffdf33] text-white font-semibold px-8 py-6 rounded-full text-lg"
           >
             <Link to="/register">
               Sign Up Now
