@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 type Address = {
   street: string;
@@ -37,6 +38,7 @@ type RegistrationData = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<RegistrationData>({
     primaryUser: {
@@ -161,13 +163,13 @@ const Register = () => {
 
       toast({
         title: "Registration Successful! 🎉",
-        description: "Your account has been created. You can now log in.",
-        duration: 5000,
+        description: "Your account has been created. Redirecting to dashboard...",
+        duration: 3000,
       });
 
-      // Redirect to login
+      // Redirect to dashboard after a short delay
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate('/dashboard');
       }, 2000);
     } catch (error) {
       toast({
@@ -187,14 +189,16 @@ const Register = () => {
     error?: string
   ) => (
     <div className="space-y-2">
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name} className="text-[#32CD32] font-medium">
+        {label}
+      </Label>
       <Input
         id={name}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          "transition-all duration-200",
+          "transition-all duration-200 border-[#32CD32]/20 focus-visible:ring-[#32CD32]",
           error && "border-red-500 focus-visible:ring-red-500"
         )}
       />
@@ -210,8 +214,10 @@ const Register = () => {
     <div className="space-y-4">
       {showSameAsAbove && (
         <div className="flex items-center space-x-2">
-          <Checkbox id="sameAddress" />
-          <Label htmlFor="sameAddress">Same as above</Label>
+          <Checkbox id="sameAddress" className="border-[#32CD32] text-[#32CD32]" />
+          <Label htmlFor="sameAddress" className="text-[#32CD32]">
+            Same as above
+          </Label>
         </div>
       )}
       {renderInputField("Street Address", "street", address.street, 
@@ -228,31 +234,31 @@ const Register = () => {
   );
 
   return (
-    <div className="min-h-screen bg-primary/10 p-4 md:p-6">
+    <div className="min-h-screen bg-[#32CD32] bg-gradient-to-br from-[#32CD32] to-[#7CFF7C] p-4 md:p-6">
       <div className="max-w-2xl mx-auto pt-8 md:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Card className="shadow-xl border-0">
-            <CardHeader className="space-y-1">
+          <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
+            <CardHeader className="space-y-1 pb-2">
               <div className="flex items-center justify-between">
                 {step > 1 && (
                   <button
                     onClick={handleBack}
-                    className="text-gray-500 hover:text-primary transition-colors"
+                    className="text-[#FFD700] hover:text-[#FFB700] transition-colors"
                   >
                     <ArrowLeft className="h-5 w-5" />
                   </button>
                 )}
                 <div className="flex-1 text-center">
-                  <CardTitle className="text-2xl font-bold">
+                  <CardTitle className="text-2xl font-bold text-[#32CD32]">
                     {step === 1 && "Primary User Information"}
                     {step === 2 && "Spouse Information"}
                     {step === 3 && "Heir Information"}
                   </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-[#FFD700] font-medium mt-1">
                     Step {step} of {totalSteps}
                   </p>
                 </div>
@@ -264,7 +270,7 @@ const Register = () => {
             <div className="px-6 py-1">
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-primary"
+                  className="h-full bg-[#FFD700]"
                   initial={{ width: `${((step - 1) / totalSteps) * 100}%` }}
                   animate={{ width: `${(step / totalSteps) * 100}%` }}
                   transition={{ duration: 0.3 }}
@@ -406,12 +412,18 @@ const Register = () => {
 
                   <div className="flex justify-end pt-6">
                     {step < totalSteps ? (
-                      <Button onClick={handleNext} className="w-full sm:w-auto">
+                      <Button 
+                        onClick={handleNext} 
+                        className="w-full sm:w-auto bg-[#32CD32] hover:bg-[#28A428] text-white"
+                      >
                         Next Step
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     ) : (
-                      <Button onClick={handleSubmit} className="w-full sm:w-auto">
+                      <Button 
+                        onClick={handleSubmit} 
+                        className="w-full sm:w-auto bg-[#FFD700] hover:bg-[#FFB700] text-white"
+                      >
                         Complete Registration
                       </Button>
                     )}
@@ -428,7 +440,7 @@ const Register = () => {
             <motion.div
               key={index}
               className={`w-2 h-2 rounded-full ${
-                index + 1 <= step ? "bg-primary" : "bg-gray-300"
+                index + 1 <= step ? "bg-[#FFD700]" : "bg-white/50"
               }`}
               animate={{
                 scale: index + 1 === step ? 1.2 : 1,
