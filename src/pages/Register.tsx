@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -37,6 +38,7 @@ type RegistrationData = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<RegistrationData>({
     primaryUser: {
@@ -161,13 +163,13 @@ const Register = () => {
 
       toast({
         title: "Registration Successful! 🎉",
-        description: "Your account has been created. You can now log in.",
+        description: "Your account has been created. Redirecting to dashboard...",
         duration: 5000,
       });
 
-      // Redirect to login
+      // Redirect to dashboard using React Router
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate('/dashboard');
       }, 2000);
     } catch (error) {
       toast({
@@ -187,14 +189,14 @@ const Register = () => {
     error?: string
   ) => (
     <div className="space-y-2">
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name} className="text-gray-700">{label}</Label>
       <Input
         id={name}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          "transition-all duration-200",
+          "transition-all duration-200 bg-gray-50 border-gray-200 focus:bg-white",
           error && "border-red-500 focus-visible:ring-red-500"
         )}
       />
@@ -260,11 +262,10 @@ const Register = () => {
               </div>
             </CardHeader>
 
-            {/* Progress Bar */}
             <div className="px-6 py-1">
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-primary"
+                  className="h-full bg-[#FFD700]"
                   initial={{ width: `${((step - 1) / totalSteps) * 100}%` }}
                   animate={{ width: `${(step / totalSteps) * 100}%` }}
                   transition={{ duration: 0.3 }}
@@ -406,12 +407,18 @@ const Register = () => {
 
                   <div className="flex justify-end pt-6">
                     {step < totalSteps ? (
-                      <Button onClick={handleNext} className="w-full sm:w-auto">
+                      <Button 
+                        onClick={handleNext} 
+                        className="w-full sm:w-auto bg-[#FFD700] hover:bg-[#FFED4A] text-gray-800"
+                      >
                         Next Step
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     ) : (
-                      <Button onClick={handleSubmit} className="w-full sm:w-auto">
+                      <Button 
+                        onClick={handleSubmit} 
+                        className="w-full sm:w-auto bg-[#FFD700] hover:bg-[#FFED4A] text-gray-800"
+                      >
                         Complete Registration
                       </Button>
                     )}
@@ -422,13 +429,12 @@ const Register = () => {
           </Card>
         </motion.div>
 
-        {/* Steps indicator */}
         <div className="mt-8 flex justify-center gap-2">
           {Array.from({ length: totalSteps }).map((_, index) => (
             <motion.div
               key={index}
               className={`w-2 h-2 rounded-full ${
-                index + 1 <= step ? "bg-primary" : "bg-gray-300"
+                index + 1 <= step ? "bg-[#FFD700]" : "bg-gray-300"
               }`}
               animate={{
                 scale: index + 1 === step ? 1.2 : 1,
